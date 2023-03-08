@@ -31,33 +31,54 @@ version: "1.0"
 
 A platform that implements this interface will be able to generate a set of inputs for the `run_analysis` function, collect the outputs, and store them in a data store. The platform will also be able to generate a configuration file for the rule based on the `generate_sample_config` function. A configuration for a building in the platform might look like:
 ```yaml
-name: "Rule 1"
-description: "Rule 1 description"
-version: "1.0"
-params:
-    param1:
-      name: "Parameter One"
-      description: "Parameter One Description"
-      type: "float"
-      default: 1.0
-    param2:
-        name: "Parameter Two"
-        description: "Parameter Two Description"
-        type: "float"
-        default: 2.0
-instances:
-  - col_name_one: "datapoint_path_or_uuid"
-    col_name_two: "datapoint_path_or_uuid"
-    col_name_three: "datapoint_path_or_uuid"
-    output_col: "equip_one_rule_one"
+analytics:
+    name: "Rule 1"
+    description: "Rule 1 description"
+    version: "0.0.1"
     params:
+        param1:
+        name: "Parameter One"
+        description: "Parameter One Description"
+        type: "float"
+        default: 1.0
+        param2:
+            name: "Parameter Two"
+            description: "Parameter Two Description"
+            type: "float"
+            default: 2.0
+    instances:
+    - col_name_one: "datapoint_path_or_uuid"
+        col_name_two: "datapoint_path_or_uuid"
+        col_name_three: "datapoint_path_or_uuid"
+        output_col: "equip_one_rule_one"
+        params:
+        param1: 1.5
+        param2: 2.7
+    - col_name_one: "datapoint_path_or_uuid"
+        col_name_two: "datapoint_path_or_uuid"
+        col_name_three: "datapoint_path_or_uuid"
+        output_col: "equip_two_rule_one"
+        // this instance will use default parameters
+    name: "Rule 2"
+    description: "Rule 2 description"
+    version: "0.1.3"
+    params:
+        param1:
+            name: "Parameter One"
+            description: "Parameter One Description"
+            type: "float"
+            default: 1.0
+        param2:
+            name: "Parameter Two"
+            description: "Parameter Two Description"
+            type: "float"
+            default: 2.0
+    instances:
+    - col_name_one: "datapoint_path_or_uuid"
+      col_name_two: "datapoint_path_or_uuid"
+      col_name_three: "datapoint_path_or_uuid"
+      output_col: "equip_one_rule_two"
+      params:
       param1: 1.5
       param2: 2.7
-  - col_name_one: "datapoint_path_or_uuid"
-    col_name_two: "datapoint_path_or_uuid"
-    col_name_three: "datapoint_path_or_uuid"
-    output_col: "equip_two_rule_one"
-    // this instance will use default parameters
 ```
-
-This method takes a Pandas data frame with columns named as defined in the  
